@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login and Signup Page</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <div class="container">
         <div class="form-container">
@@ -15,8 +17,12 @@
             </div>
             <form id="login-form" class="form">
                 <h2>Login</h2>
-                <input type="email" id="login-email" placeholder="Email" required>
+                <input type="text" id="login-username" placeholder="Username" required>
                 <input type="password" id="login-password" placeholder="Password" required>
+                <select name="user_type">
+                    <option value="Student" id="lo1">Admin</option>
+                    <option value="Admin" id="lo2">Student</option>
+                </select>
                 <button type="submit">Login</button>
             </form>
             <form id="signup-form" class="form">
@@ -24,10 +30,16 @@
                 <input type="text" id="signup-username" placeholder="Username" required>
                 <input type="email" id="signup-email" placeholder="Email" required>
                 <input type="password" id="signup-password" placeholder="Password" required>
+                <input type="password" id="signup-cpassword" placeholder="Confirm Password" required>
+                <select name="user_type">
+                    <option value="Student" id="so1">Admin</option>
+                    <option value="Admin" id="so2">Student</option>
+                </select>
                 <button type="submit">Sign Up</button>
             </form>
         </div>
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>
