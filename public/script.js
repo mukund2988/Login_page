@@ -29,10 +29,10 @@ document.getElementById("signup-submit").addEventListener("click", function (e) 
 document.getElementById("login-submit").addEventListener("click", function (e) {
     e.preventDefault()
     const data = {
-        auth:"login",
-        role: document.getElementById("user_type").value,
-        email: document.getElementById("signup-email").value,
-        password: document.getElementById("signup-password").value,
+        auth: "login",
+        role: document.getElementById("user_type_login").value,
+        email: document.getElementById("login-email").value,
+        password: document.getElementById("login-password").value,
     };
     console.log(data);
     authData(url, data)
@@ -54,17 +54,23 @@ async function postData(url, data) {
         redirect: "follow", // manual, *follow, error
         referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
         body: JSON.stringify(data), // body data type must match "Content-Type" header
-    }).then((res)=>{
-        console.log(res);
-        if(res.status===200){   
-           window.location.href="http://localhost:4500/admin";
+    }).then((res) => {
+        if (res.status === 201) {
+            localStorage.setItem("role", data.role);
+            window.location.href = "http://localhost:4500/student";
         }
-        else{
-            console.log("Error");
-            document.getElementById('error').innerHTML='Exists'
+        else if (res.status === 203) {
+            window.location.href = "http://localhost:4500/admin";
+            //TODO: add "not auth to /admin"
+            localStorage.setItem("role", data.role);
+
+        }
+
+        else if (res.status === 400) {
+            document.getElementById('error-signup').innerHTML = 'User already exists'
         }
     })
-    localStorage.setItem("role",data.role);
+   
     return  // parses JSON response into native JavaScript objects
 }
 
@@ -82,15 +88,21 @@ async function authData(url, data) {
         redirect: "follow", // manual, *follow, error
         referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
         body: JSON.stringify(data), // body data type must match "Content-Type" header
-    }).then((res)=>{
-        console.log(res);
-        if(res.status===200){   
-           window.location.href="http://localhost:4500/admin";
+    }).then((res) => {
+        if (res.status === 201) {
+            localStorage.setItem("role", data.role);
+            window.location.href = "http://localhost:4500/student";
         }
-        else{
-            console.log("Error");
-            document.getElementById('error').innerHTML='Wrong'
+        else if (res.status === 202) {
+            window.location.href = "http://localhost:4500/admin";
+            //TODO: add "not auth to /admin"
+            localStorage.setItem("role", data.role);
+
+        }
+
+        else if (res.status === 405) {
+            document.getElementById('error').innerHTML = 'Wrong email or password'
         }
     })
-  // parses JSON response into native JavaScript objects
+    // parses JSON response into native JavaScript objects
 }

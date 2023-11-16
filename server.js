@@ -1,20 +1,44 @@
 import express from 'express';
-import { registerUser,authUser } from './src/db2.js';
+import { Router } from 'express';
+import { registerUser, authUser,showStudents } from './src/db2.js';
 import path from 'node:path';
 import { fileURLToPath } from 'url';
 
 
+
 const app = express();
+const router = Router();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 
+app.use(express.static('public'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/', express.static('public'));
 
+
+app.get('/', (req, res) => {
+    res.render("index")
+})
+
+
+
+app.get('/admin', async(req, res, next) => {
+    const response = await showStudents();
+    res.render("admin",{students:response})
+        
+
+
+})
+
+app.post('/admin', async (req, res) => {
+        
+})
+app.get('/student', (req, res) => {
+    res.render('stud');
+});
 
 
 app.post('/', async (req, res) => {
@@ -22,29 +46,25 @@ app.post('/', async (req, res) => {
     try {
         if (req.body.auth) {
             const response = await authUser(req.body);
-            console.log(response);
-            if (response) {
-                res.json({ message: "Login Success" });
-
+            if (!response) {
+                res.sendStatus(405)
             }
+            else if (response === 201)
+                res.sendStatus(201)
             else {
-                //res.sendStatus(400)
-                res.json({ message: "Login" });
-
+                res.sendStatus(202)
             }
         }
 
-        else{
+        else {
             const response = await registerUser(req.body);
-            console.log(response);
-            if (response) {
-                res.json({ message: "Success" });
-
+            if (!response) {
+                res.sendStatus(400)
             }
+            else if (response === 201)
+                res.sendStatus(201)
             else {
-                //res.sendStatus(400)
-                res.json({ message: "Exists" });
-
+                res.sendStatus(203)
             }
         }
     }
@@ -55,13 +75,6 @@ app.post('/', async (req, res) => {
 
 
 
-app.get('/admin', (req, res) => {
-    res.render('admin');
-})
-
-app.get('/student', (req, res) => {
-    res.render('stud');
-});
 
 
 app.listen(4500, () => {

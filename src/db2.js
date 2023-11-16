@@ -19,28 +19,25 @@ db.connect((err) => {
 export async function registerUser(data) {
     try {
         if (data.role === "Admin") {
-            const email = await db.promise().query("select email from admin");
-            if (!email[0].some(e => e.email === data.email)) {
+            const email = await db.promise().query("select email,pswd from admin where email=?", [data.email]);
+            if (email[0].length == 0) {
                 await db.promise().query("insert into admin values(?,?,?)", [data.name, data.email, data.password]);
-                return true;
+                return 202;
             }
-            else {
-                console.log("Admin Email already exists");
+            else
                 return false
-                //TODO: ui update & reject promise
-            }
+            //TODO: ui update & reject promise
+
         }
         else if (data.role === "Student") {
-            const email = await db.promise().query("select email from students");
-            if (!email[0].some(e => e.email === data.email)) {
+            const email = await db.promise().query("select email,pswd from students where email=?", [data.email]);
+            if (email[0].length == 0) {
                 await db.promise().query("insert into students values(?,?,?,?)", [0, data.name, data.email, data.password]);
-                return true
+                return 201
             }
-            else {
-                console.log("Email already exists");
+            else
                 return false;
-                //TODO: ui update
-            }
+            //TODO: ui update
         }
     }
     catch (err) {
@@ -49,6 +46,37 @@ export async function registerUser(data) {
 }
 
 
-export async function authUser(data){
-    return true
+export async function authUser(data) {
+    try {
+        if (data.role === "Admin") {
+            const auth = await db.promise().query("select email,pswd from admin where email=? and pswd=?", [data.email, data.password]);
+            if (auth[0].length == 0)
+                return false
+            else
+                return 202
+
+            {
+                //TODO: ui update & reject promise
+            }
+        }
+        else if (data.role === "Student") {
+            const auth = await db.promise().query("select email,pswd from students where email=? and pswd=?", [data.email, data.password]);
+            if (auth[0].length == 0)
+                return false
+            else {
+
+                return 201;
+            }
+
+
+        }
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
+export async function showStudents(){
+    const studs= await db.promise().query("select sid,name from students");
+    return studs[0];
 }
