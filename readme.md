@@ -7,17 +7,20 @@
 2. Database name - "att"
 
 3. VSCode extensions: 
-    i.   Name: SQLTools
+    1.   Name: SQLTools
+
             - Id: mtxr.sqltools
             - VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=mtxr.sqltools
 
-    ii.  Name: SQLTools MySQL/MariaDB/TiDB
-            -Id: mtxr.sqltools-driver-mysql
-            -VS Marketplace Link: https://m iii. prearketplace.visualstudio.com/items?itemName=mtxr.sqltools-driver-mysql
+    2.  Name: SQLTools MySQL/MariaDB/TiDB
 
-    iii. Name: Prettier SQL VSCode (Recommended)
-            -Id: inferrinizzard.prettier-sql-vscode
-            -VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=inferrinizzard.prettier-sql-vscode
+            - Id: mtxr.sqltools-driver-mysql
+            - VS Marketplace Link: https://m iii. prearketplace.visualstudio.com/items?itemName=mtxr.sqltools-driver-mysql
+
+    3. Name: Prettier SQL VSCode (Recommended)
+
+            - Id: inferrinizzard.prettier-sql-vscode
+            - VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=inferrinizzard.prettier-sql-vscode
 
 4. Connect to 'att' database using SQLTools in VSCode by adding
     - Connection name
