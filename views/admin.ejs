@@ -17,6 +17,10 @@
         width: 20px;
         height: 20px;
     }
+    td{
+        padding: 12px;
+    }
+
 </style>
 
 <body>
@@ -45,25 +49,26 @@
                 </td>
                 
                 <td>
-                    <input id="is_present" name="ml" type="checkbox">
+                    <input class="is_present" name="ml" type="checkbox" >
                 </td>
                 <td>
-                    <input id="is_present" name="oosd" type="checkbox">
+                    <input class="is_present" name="oosd" type="checkbox">
                 </td>
                 <td>
-                    <input id="is_present" name="dbms" type="checkbox">
+                    <input class="is_present" name="dbms" type="checkbox">
                 </td>
                 <td>
-                    <input id="is_present" name="daa" type="checkbox">
+                    <input class="is_present" name="daa" type="checkbox">
                 </td>
                 <td>
-                    <input id="is_present" name="wt" type="checkbox">
+                    <input class="is_present" name="wt" type="checkbox">
                 </td>
             </tr>
             <% } %>
 
     </table>
 
+    <br><br><br><br>
     <table border="1">
         <tr>
             <th>ID</th>
@@ -107,6 +112,9 @@
                 <% } %>
         </tr>
     </table>
+    <button type="submit" id="submit-btn" disabled="true">Submit</button>
+    <button type="" id="save-btn" >Save</button>
+    <button type="reset" id="reset-btn">Reset</button>
     <script src="/admin.js"></script>
 </body>
 

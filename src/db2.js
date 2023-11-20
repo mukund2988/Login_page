@@ -94,3 +94,7 @@ export async function getAttendance(email) {
     const subj_att = await db.promise().query("select ML,OOSD,DBMS,DAA,WT from subject_att where sid in(select sid from students where email=?)", [email]);
     return [attendance[0],subj_att[0]];
 }
+
+export async function updateAttendance(data){
+    console.log(data);
+}

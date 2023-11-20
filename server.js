@@ -1,9 +1,10 @@
 import express from 'express';
 import { Router } from 'express';
-import { registerUser, authUser,showStudents,getAttendance } from './src/db2.js';
+import { registerUser, authUser,showStudents,getAttendance,updateAttendance } from './src/db2.js';
 import path from 'node:path';
 import { fileURLToPath } from 'url';
-
+import { data } from './data.js';
+import { log } from 'node:console';
 
 
 
@@ -28,6 +29,7 @@ app.get('/', (req, res) => {
 
 app.get('/admin', async(req, res, next) => {
     const response = await showStudents();
+    
     res.render("admin",{students:response})
         
 
@@ -35,10 +37,20 @@ app.get('/admin', async(req, res, next) => {
 })
 
 app.post('/admin', async (req, res) => {
-        
+    
+    if(req.headers.auth==="admin")
+    {
+        res.sendStatus(200)
+        // updateAttendance(req.body)
+    }
+    console.log(req.body);
+   // const response = await showStudents();
+   
+    
 })
 app.get('/student', async(req, res) => {
     const attendance = await getAttendance(decodeURIComponent(req.query.email));
+    
     res.render('stud',{attendance:attendance});
 });
 
