@@ -25,8 +25,11 @@
         <tr>
             <th>ID</th>
             <th>NAME</th>
-            <th>ATT</th>
-            <th>IS_PRESENT</th>
+            <th>ML</th>
+            <th>OOSD</th>
+            <th>DBMS</th>
+            <th>DAA</th>
+            <th>WT</th>
         </tr>
 
 
@@ -40,11 +43,21 @@
                 <td>
                     <%= student.name %>
                 </td>
+                
                 <td>
-                    <%= student.attendance %>
+                    <input id="is_present" name="ml" type="checkbox">
                 </td>
                 <td>
-                    <input id="is_present" type="checkbox">
+                    <input id="is_present" name="oosd" type="checkbox">
+                </td>
+                <td>
+                    <input id="is_present" name="dbms" type="checkbox">
+                </td>
+                <td>
+                    <input id="is_present" name="daa" type="checkbox">
+                </td>
+                <td>
+                    <input id="is_present" name="wt" type="checkbox">
                 </td>
             </tr>
             <% } %>
@@ -54,6 +67,8 @@
     <table border="1">
         <tr>
             <th>ID</th>
+            <th>NAME</th>
+            <th>Attendance</th>
             <th>ML</th>
             <th>OOSD</th>
             <th>DBMS</th>
@@ -65,6 +80,12 @@
                     <td>
                         <%= att.sid %>
     
+                    </td>
+                    <td>
+                        <%= att.name %>
+                    </td>
+                    <td>
+                        <%= att.attendance %>
                     </td>
                     <td>
                         <%= att.ML %>

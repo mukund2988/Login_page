@@ -7,4 +7,7 @@ export const data ={
     "WT":50
 };
 
-//TODO: make a formula to calculate attendance percentage
+//TODO: make a formula to calculate attendance percentage 
+
+//attendancePercentage = (totalAttendedClasses / totalClasses) * 100
+

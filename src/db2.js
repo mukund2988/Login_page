@@ -77,13 +77,20 @@ export async function authUser(data) {
 }
 
 export async function showStudents(){
+    const sql="SELECT students.sid AS sid,students.name AS name,students.attendance AS attendance,subject_att.ML AS ML,subject_att.OOSD AS OOSD,subject_att.DBMS AS DBMS,subject_att.DAA AS DAA,subject_att.WT AS WT FROM students INNER JOIN subject_att on students.sid = subject_att.sid;"
+
     const studs= await db.promise().query("select sid,name,attendance from students");
-    const sub_att= await db.promise().query("select * from subject_att")
+    const sub_att= await db.promise().query(sql)
+    
     return [studs[0],sub_att[0]];
 }
 
 export async function getAttendance(email) {
     const attendance = await db.promise().query("select name,attendance from students where email=?", [email]);
+    
+    
+
+
     const subj_att = await db.promise().query("select ML,OOSD,DBMS,DAA,WT from subject_att where sid in(select sid from students where email=?)", [email]);
     return [attendance[0],subj_att[0]];
 }

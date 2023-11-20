@@ -36,11 +36,16 @@ CREATE TABLE `subject_att` (
 --@block
 SELECT 
     students.sid AS sid,
-    students.attendance AS attendance,
     students.name AS name,
-    subject_att.ML AS ML
+    students.attendance AS attendance,
+    subject_att.ML AS ML,
+    subject_att.OOSD AS OOSD,
+    subject_att.DBMS AS DBMS,
+    subject_att.DAA AS DAA,
+    subject_att.WT AS WT
     
 FROM students
 INNER JOIN subject_att
 on students.sid = subject_att.sid;
+
 
