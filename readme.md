@@ -29,7 +29,7 @@
     - Username
     - Password
 
-5. Go to /schema and start executing queries by clicking "Run on active connection" in each block (--@block) in the 'schema/db.session.sql'.
+5. Go to /schema and start executing queries by clicking "Run on active connection" in each block (--@block) in the 'db.session.sql'.
 
 ## Setup project 
 
