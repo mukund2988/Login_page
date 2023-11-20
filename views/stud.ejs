@@ -1,11 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <h1>Student</h1>
+    <h1>Student: <%=attendance[0][0].name %></h1>
+    <h2>Your overall attendace</h2>
+    <h3>Percentage: <%= attendance[0][0].attendance %>
+    </h3>
+
+    
+    <h2>Subject Wise attendance:</h2>
+    <table border="1">
+        <tr>
+            <th>ML</th>
+            <th>OOSD</th>
+            <th>DBMS</th>
+            <th>DAA</th>
+            <th>WT</th>
+        </tr>
+
+
+        <% for(let att of attendance[1]) { %>
+            <tr>
+
+                <td>
+                    <%= att.ML %>
+
+                </td>
+                <td>
+                    <%= att.OOSD %>
+                </td>
+                <td>
+                    <%= att.DBMS %>
+                </td>
+                <td>
+                    <%= att.DAA %>
+                </td>
+                <td>
+                    <%= att.WT %>
+                </td>
+                
+            </tr>
+            <% } %>
+
+    </table>
 </body>
+
 </html>

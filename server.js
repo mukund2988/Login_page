@@ -1,8 +1,9 @@
 import express from 'express';
 import { Router } from 'express';
-import { registerUser, authUser,showStudents } from './src/db2.js';
+import { registerUser, authUser,showStudents,getAttendance } from './src/db2.js';
 import path from 'node:path';
 import { fileURLToPath } from 'url';
+
 
 
 
@@ -36,8 +37,9 @@ app.get('/admin', async(req, res, next) => {
 app.post('/admin', async (req, res) => {
         
 })
-app.get('/student', (req, res) => {
-    res.render('stud');
+app.get('/student', async(req, res) => {
+    const attendance = await getAttendance(decodeURIComponent(req.query.email));
+    res.render('stud',{attendance:attendance});
 });
 
 

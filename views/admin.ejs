@@ -25,11 +25,12 @@
         <tr>
             <th>ID</th>
             <th>NAME</th>
+            <th>ATT</th>
             <th>IS_PRESENT</th>
         </tr>
 
 
-        <% for(let student of students) { %>
+        <% for(let student of students[0]) { %>
             <tr>
 
                 <td>
@@ -40,11 +41,50 @@
                     <%= student.name %>
                 </td>
                 <td>
+                    <%= student.attendance %>
+                </td>
+                <td>
                     <input id="is_present" type="checkbox">
                 </td>
             </tr>
             <% } %>
 
+    </table>
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>ML</th>
+            <th>OOSD</th>
+            <th>DBMS</th>
+            <th>DAA</th>
+            <th>WT</th>
+            <% for(let att of students[1]) { %>
+                <tr>
+    
+                    <td>
+                        <%= att.sid %>
+    
+                    </td>
+                    <td>
+                        <%= att.ML %>
+                    </td>
+                    <td>
+                        <%= att.OOSD %>
+                    </td>
+                    <td>
+                        <%= att.DBMS %>
+                    </td>
+                    <td>
+                        <%= att.DAA %>
+                    </td>
+                    <td>
+                        <%= att.WT %>
+                    </td>
+    
+                </tr>
+                <% } %>
+        </tr>
     </table>
     <script src="/admin.js"></script>
 </body>
