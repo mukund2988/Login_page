@@ -2,7 +2,7 @@
 
 ## Setup DB
 
-1. MySQL installed
+1. MySQL installed (prerequisite)
 
 2. Create database with name - "att"
 
