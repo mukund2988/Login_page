@@ -21,11 +21,11 @@ CREATE TABLE `admin` (
 --@block
 CREATE TABLE `subject_att` (
   `sid` int NOT NULL,
-  `ML` decimal(10,1) NOT NULL,
-  `OOSD` decimal(10,1) NOT NULL,
-  `DBMS` decimal(10,1) NOT NULL,
-  `DAA` decimal(10,1) NOT NULL,
-  `WT` decimal(10,1) NOT NULL,
+  `ML` int NOT NULL,
+  `OOSD` int NOT NULL,
+  `DBMS` int NOT NULL,
+  `DAA` int NOT NULL,
+  `WT` int NOT NULL,
   PRIMARY KEY (`sid`),
   KEY `id_index` (`sid`),
   CONSTRAINT `sid` FOREIGN KEY (`sid`) REFERENCES `students` (`sid`)
