@@ -25,9 +25,17 @@
 4. Connect to 'att' database using SQLTools in VSCode by adding: 
     - Connection name
     - Port
-    - Database
+    - Database name
     - Username
     - Password
+5. Overwrite the values in src/db2.js:
+    `const db = mysql.createConnection({
+     host: "localhost",
+     port: YOUR_PORT,
+     user: "USER_NAME",
+     password: <"PASSWORD">,
+     database: "att",
+});`
 
 5. Go to /schema and start executing queries by clicking "Run on active connection" in each block (--@block) in the 'db.session.sql'.
 
