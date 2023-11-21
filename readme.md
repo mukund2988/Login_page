@@ -28,7 +28,7 @@
     - Database name
     - Username
     - Password
-5. Overwrite the valuss src/db2.js:
+5. Overwrite the values src/db2.js:
     `const db = mysql.createConnection({
      host: "localhost",
      port: YOUR_PORT,
