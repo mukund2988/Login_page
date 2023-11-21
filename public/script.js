@@ -34,7 +34,6 @@ document.getElementById("login-submit").addEventListener("click", function (e) {
         email: document.getElementById("login-email").value,
         password: document.getElementById("login-password").value,
     };
-    console.log(data);
     authData(url, data)
 
 })
@@ -57,11 +56,12 @@ async function postData(url, data) {
     }).then((res) => {
         if (res.status === 201) {
             localStorage.setItem("role", data.role);
-            window.location.href = "http://localhost:4500/student";
+            const url = new URL("http://localhost:4500/student");
+            url.searchParams.set("email", data.email);
+            window.location.href = url.href;
         }
         else if (res.status === 203) {
             window.location.href = "http://localhost:4500/admin";
-            //TODO: add "not auth to /admin"
             localStorage.setItem("role", data.role);
 
         }

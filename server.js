@@ -3,8 +3,7 @@ import { Router } from 'express';
 import { registerUser, authUser,showStudents,getAttendance,updateAttendance } from './src/db2.js';
 import path from 'node:path';
 import { fileURLToPath } from 'url';
-import { data } from './data.js';
-import { log } from 'node:console';
+
 
 
 
@@ -49,7 +48,7 @@ app.post('/admin', async (req, res) => {
     
 })
 app.get('/student', async(req, res) => {
-    const attendance = await getAttendance(decodeURIComponent(req.query.email));
+    const attendance = await getAttendance(decodeURIComponent(req.query?.email));
     
     res.render('stud',{attendance:attendance});
 });

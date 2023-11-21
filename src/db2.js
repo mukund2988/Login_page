@@ -20,31 +20,32 @@ export async function registerUser(data) {
     try {
         if (data.role === "Admin") {
             const email = await db.promise().query("select email,pswd from admin where email=?", [data.email]);
-            if (email[0].length == 0) {
+            if (email[0].length == 0) { 	//checks if the user already exixts.
                 await db.promise().query("insert into admin values(?,?,?)", [data.name, data.email, data.password]);
+                
                 return 202;
             }
             else
-                return false
-            //TODO: ui update & reject promise
-
-        }
-        else if (data.role === "Student") {
-            const email = await db.promise().query("select email,pswd from students where email=?", [data.email]);
-            if (email[0].length == 0) {
-                await db.promise().query("insert into students values(?,?,?,?)", [0, data.name, data.email, data.password]);
-                return 201
+            return false
+        
+        
+    }
+    else if (data.role === "Student") {
+        const email = await db.promise().query("select email,pswd from students where email=?", [data.email]);
+        if (email[0].length == 0) {
+            await db.promise().query("insert into students values(?,?,?,?,?)", [0, data.name, data.email, data.password,0]);
+            await db.promise().query("insert into subject_att values(?,?,?,?,?,?)",[0,0,0,0,0,0]);
+            return 201
             }
             else
                 return false;
-            //TODO: ui update
+            
         }
     }
     catch (err) {
         console.log(err);
     }
 }
-
 
 export async function authUser(data) {
     try {
@@ -96,5 +97,5 @@ export async function getAttendance(email) {
 }
 
 export async function updateAttendance(data){
-    console.log(data);
+    
 }
