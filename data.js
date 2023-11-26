@@ -1,13 +1,13 @@
-export const data ={
-    "total_classes": 250,
-    "ML":50,
-    "OOSD":50,
-    "DBMS":50,
-    "DAA":50,
-    "WT":50
+export const noOfClasses = {
+    "total_classes": 0,
+    "ML": 1,
+    "OOSD": 1,
+    "DBMS": 1,
+    "DAA": 1,
+    "WT": 1
 };
 
 //TODO: make a formula to calculate attendance percentage 
 
-//attendancePercentage = (totalAttendedClasses / totalClasses) * 100
+
 

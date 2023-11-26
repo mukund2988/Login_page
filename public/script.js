@@ -56,6 +56,7 @@ async function postData(url, data) {
     }).then((res) => {
         if (res.status === 201) {
             localStorage.setItem("role", data.role);
+            localStorage.setItem("email", data.email);
             const url = new URL("http://localhost:4500/student");
             url.searchParams.set("email", data.email);
             window.location.href = url.href;
@@ -90,10 +91,16 @@ async function authData(url, data) {
         body: JSON.stringify(data), // body data type must match "Content-Type" header
     }).then((res) => {
         if (res.status === 201) {
-            localStorage.setItem("role", data.role);
+            let ls = {
+                "role": data.role,
+                "email": data.email
+
+            }
+            localStorage.setItem("role", JSON.stringify(ls));
             const url = new URL("http://localhost:4500/student");
             url.searchParams.set("email", data.email);
             window.location.href = url.href;
+        
         }
         else if (res.status === 202) {
             window.location.href = "http://localhost:4500/admin";

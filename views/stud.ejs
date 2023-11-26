@@ -8,12 +8,22 @@
 </head>
 
 <body>
-    <h1>Student: <%=attendance[0][0].name %></h1>
+    <h1>Student: <%=attendance[0][0].name %>
+    </h1>
     <h2>Your overall attendace</h2>
-    <h3>Percentage: <%= attendance[0][0].attendance %>
+    <h3>Percentage:
+        <% if(attendance[0][0].attendance>100) {%>
+            <span>
+                100
+            </span>
+        <% } else { %>
+                <%= attendance[0][0].attendance %>
+        <% } %>
+
+
     </h3>
 
-    
+
     <h2>Subject Wise attendance:</h2>
     <table border="1">
         <tr>
@@ -44,11 +54,12 @@
                 <td>
                     <%= att.WT %>
                 </td>
-                
+
             </tr>
             <% } %>
 
     </table>
+    <script src="/stud.js"></script>
 </body>
 
 </html>

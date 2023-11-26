@@ -1,14 +1,12 @@
 import express from 'express';
-import { Router } from 'express';
 import { registerUser, authUser,showStudents,getAttendance,updateAttendance } from './src/db2.js';
 import path from 'node:path';
 import { fileURLToPath } from 'url';
 
-
+const PORT = process.env.PORT || 4500;
 
 
 const app = express();
-const router = Router();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -39,10 +37,9 @@ app.post('/admin', async (req, res) => {
     
     if(req.headers.auth==="admin")
     {
-        res.sendStatus(200)
-        // updateAttendance(req.body)
+        updateAttendance(req.body)
     }
-    console.log(req.body);
+  
    // const response = await showStudents();
    
     
@@ -90,6 +87,6 @@ app.post('/', async (req, res) => {
 
 
 
-app.listen(4500, () => {
-    console.log("Server running on port 4500");
+app.listen(PORT, () => {
+    console.log(`Server running on port http:localhost:${PORT}`);
 })

@@ -3,6 +3,7 @@ if (localStorage.getItem('role') !== "Admin") {
 }
 
 const url = "/admin"
+
 let attendance = []
 const checkbox = document.querySelectorAll('.is_present')
 const submit_btn = document.getElementById('submit-btn');
@@ -17,7 +18,11 @@ save_btn.addEventListener('click', () => {
     save_btn.disabled = true;
     submit_btn.disabled = false
     for (let i = 0; i < attendance.length; i++) {
-            attendance[i] = checkbox[i].checked;
+        if (checkbox[i].checked === true) {
+            attendance[i] = 1
+        }
+        else
+            attendance[i] = 0;
     }
 })
 
@@ -25,26 +30,25 @@ reset_btn.addEventListener("click", reset_att)
 function reset_att() {
 
     for (let i = 0; i < attendance.length; i++) {
-            checkbox[i].checked = false;
-            save_btn.disabled = false;
-            submit_btn.disabled = true
+        checkbox[i].checked = false;
+        save_btn.disabled = false;
+        submit_btn.disabled = true
     }
 }
 
 async function postData(e) {
-    submit_btn.disabled = true
     e.preventDefault();
+    submit_btn.disabled = true
     await fetch(url, {
-            method: "POST",
-            headers: {
-                    "Content-Type": "application/json",
-                    "auth": "admin"
-
-            },
-            body: JSON.stringify(attendance),
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "auth": "admin"
+        },
+        body: JSON.stringify(attendance),
     })
     setTimeout(() => {
-            submit_btn.disabled = false
-            reset_att()
+        submit_btn.disabled = false
+        reset_att()
     }, 3000)
 }
