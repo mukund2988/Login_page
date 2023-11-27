@@ -16,49 +16,42 @@
             <span>
                 100
             </span>
-        <% } else { %>
+            <% } else { %>
                 <%= attendance[0][0].attendance %>
-        <% } %>
+                    <% } %>
 
 
     </h3>
 
 
     <h2>Subject Wise attendance:</h2>
-    <table border="1">
-        <tr>
-            <th>ML</th>
-            <th>OOSD</th>
-            <th>DBMS</th>
-            <th>DAA</th>
-            <th>WT</th>
-        </tr>
-
-
+    <div>
         <% for(let att of attendance[1]) { %>
-            <tr>
-
-                <td>
+            <div>
+                <div>
+                    ML
                     <%= att.ML %>
-
-                </td>
-                <td>
+                </div>
+                <div>
+                    OOSD
                     <%= att.OOSD %>
-                </td>
-                <td>
+                </div>
+                <div>
+                    DBMS
                     <%= att.DBMS %>
-                </td>
-                <td>
+                </div>
+                <div>
+                    DAA
                     <%= att.DAA %>
-                </td>
-                <td>
+                </div>
+                <div>
+                    WT
                     <%= att.WT %>
-                </td>
-
-            </tr>
+                </div>
+            </div>
             <% } %>
+    </div>
 
-    </table>
     <script src="/stud.js"></script>
 </body>
 
