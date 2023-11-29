@@ -29,12 +29,12 @@
     - Username
     - Password
 5. Create a '.env' file & fill the env values:
-    `HOST = "<HOST_NAME>" 
-     SQL_PORT = "<SQL_PORT>" 
-     USER = "<USER_NAME>" 
-     PASSWORD = "<PASSWORD>" 
-     DATABASE = "<DB_NAME>" 
-     PORT = PORT_NO` 
+    `HOST = "<HOST_NAME>"`
+    `SQL_PORT = "<SQL_PORT>"`
+    `USER = "<USER_NAME>"` 
+    `PASSWORD = "<PASSWORD>"`
+    `DATABASE = "<DB_NAME>"` 
+    `PORT = PORT_NO` 
 
 5. Go to /schema and start executing queries by clicking "Run on active connection" in each block (--@block) in the 'db.session.sql'.
 
