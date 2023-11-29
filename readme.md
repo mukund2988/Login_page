@@ -28,14 +28,13 @@
     - Database name
     - Username
     - Password
-5. Overwrite the values in src/db2.js:
-    `const db = mysql.createConnection({
-     host: "localhost",
-     port: YOUR_PORT,
-     user: "USER_NAME",
-     password: <"PASSWORD">,
-     database: "att",
-});`
+5. Create a '.env' file & fill the env values:
+    `HOST = "<HOST_NAME>" 
+     SQL_PORT = "<SQL_PORT>" 
+     USER = "<USER_NAME>" 
+     PASSWORD = "<PASSWORD>" 
+     DATABASE = "<DB_NAME>" 
+     PORT = PORT_NO` 
 
 5. Go to /schema and start executing queries by clicking "Run on active connection" in each block (--@block) in the 'db.session.sql'.
 
@@ -45,6 +44,6 @@
 
 2. Run `npm install` 
 
-3. Run `nodemon` in root folder.
+3. Run `npm run dev` in root folder.
 
 
