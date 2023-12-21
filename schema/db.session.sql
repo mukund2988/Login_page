@@ -49,3 +49,7 @@ INNER JOIN subject_att
 on students.sid = subject_att.sid;
 
 
+
+--@block
+ALTER TABLE students
+ADD Phone 
