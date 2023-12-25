@@ -61,7 +61,6 @@ async function postData(url, data) {
             }
             localStorage.setItem("email", JSON.stringify(auth));
             const url = new URL(window.location.protocol + window.location.host + "/student");
-            console.log(url);
             url.searchParams.set("email", decodeURIComponent(data.email));
             window.location.href = url;
         }

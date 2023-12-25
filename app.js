@@ -86,10 +86,6 @@ app.post('/student/', upload.single("files"), async (req, res) => {
 
 app.get('/student', async (req, res) => {
     const attendance = await getAttendance(decodeURIComponent(req.query?.email));
-    console.dir(req.query)
-    console.log(req.headers)
-    console.log(req.body);
-    console.log(attendance);
     res.render('stud', { attendance: attendance });
 });
 
